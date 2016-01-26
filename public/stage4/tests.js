@@ -17,10 +17,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       //
       // jQuery 版:
       //
-      // $('#firebrick').on('click', function(event) {
-      //   var $target = $(event.target);
-      //   $target.text(Number($target.text()) + 1);
-      // });
+      $('#firebrick').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) + 1);
+      });
       //
       // ここに上記のどちらかのコードを記述してください。
 
@@ -37,6 +37,10 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('2 番の要素の click イベントで要素内の数字を 1 ずつ小さくできる', function() {
 
       // ここにコードを記述してください。
+      $('#chocolate').on('click', function(event) {
+        var $target = $(event.target);
+        $target.text(Number($target.text()) - 1);
+      });
 
 
       var chocolate = document.getElementById('chocolate');
@@ -51,6 +55,12 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('3 番の要素の click イベントで要素を 10 度ずつ回転できる', function() {
 
       // ここにコードを記述してください。
+      var element = document.getElementsByClassName('mediumseagreen')[0];
+      var angleDegree = 0;
+      element.addEventListener('click', function() {
+          angleDegree += 10;
+          element.style.transform = 'rotate( ' + angleDegree + 'deg)';
+      });
 
 
       var mediumseagreen = document.querySelector('.mediumseagreen');
@@ -67,6 +77,12 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
     it('4 番の要素を入力された角度に回転できる', function() {
 
       // ここにコードを記述してください。
+      var element = document.getElementsByClassName('turquoise')[0];
+      var input = element.getElementsByTagName('input')[0];
+      input.addEventListener('change', function() {
+          var angleDegree = input.value;
+          element.style.transform = 'rotate( ' + angleDegree + 'deg)';
+      });
 
 
       var turquoise = document.querySelector('.turquoise');
@@ -93,9 +109,11 @@ describe('ステージ4（意図通りにイベントを利用できる）', fun
       // なお、expect(steelblue).to.be.null は上記のテストの要件を満たして
       // いないので、正解ではありません。
 
-      var steelblue = document.querySelector('.steelblue');
-      expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
-      done();
+      document.addEventListener('DOMContentLoaded', function () {
+          var steelblue = document.querySelector('.steelblue');
+          expect(steelblue).to.have.property('textContent', '5 \uD83D\uDC33');
+          done();
+      });
     });
   });
 });
