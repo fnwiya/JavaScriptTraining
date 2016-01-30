@@ -1,0 +1,18 @@
+{
+  "name": "sample",
+  "homepage": "https://github.com/fnwiya/JavaScriptTraining",
+  "authors": [
+    "fnwiya <fnwiya@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
